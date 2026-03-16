@@ -197,7 +197,7 @@ uint8_t *patch_http_url(uint8_t *data, size_t *data_len) {
     }
 
 
-    size_t http_len = strlen("http://");
+    size_t http_len = strlen("https://");
     size_t word_len = strlen(word);
     size_t pos1 = pos - data + word_len;
 
@@ -217,7 +217,7 @@ uint8_t *patch_http_url(uint8_t *data, size_t *data_len) {
     LOG("patch_http_url start patch");
     memcpy(new_data, data, pos1);
 
-    memcpy(new_data + pos1, "http://", http_len);
+    memcpy(new_data + pos1, "https://", http_len);
     memcpy(new_data + pos1 + http_len, hostname, length);
     memcpy(new_data + pos1 + http_len + length, data + pos1, *data_len - pos1);
 
