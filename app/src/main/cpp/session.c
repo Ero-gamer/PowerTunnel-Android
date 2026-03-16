@@ -294,9 +294,10 @@ void *handle_events(void *a) {
         log_android(ANDROID_LOG_ERROR, "DetachCurrentThread failed");
 
     // Cleanup
+    int tun = args->tun;
     free(args);
 
-    log_android(ANDROID_LOG_WARN, "Stopped events tun=%d thread %x", args->tun, thread_id);
+    log_android(ANDROID_LOG_WARN, "Stopped events tun=%d thread %x", tun, thread_id);
     thread_id = 0;
     return NULL;
 }
